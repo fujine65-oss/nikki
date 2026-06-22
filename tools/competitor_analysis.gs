@@ -16,13 +16,7 @@ var MAX_OUTPUT_TOKENS = 65536;
 function analyzeArticle1() {
   var config = {
     theme: '親の介護が始まった家族へ — 感情の入口記事',
-    perspective: [
-      '筆者：現役ケアマネ13年・主任介護支援専門員。',
-      '強み：企業メディアにはない"現場のリアル"。',
-      '「初日に何が起きるか」「家族が見落とすこと」「ケアマネが本当に思っていること」を具体的に語れる。',
-      '署名：結の音（AI下書き＋現役主任ケアマネが確認・加筆）。',
-      '媒体：noteで公開。介護家族と新人ケアマネの両方に届ける。'
-    ].join('\n'),
+    perspective: PERSPECTIVE,
     urls: [
       { url: 'https://goodlifesenior.com/wp/news/12847',                           label: '企業・グッドライフシニア' },
       { url: 'https://www.ycota.jp/point/52677',                                   label: '企業・ヤマシタ' },
@@ -46,7 +40,181 @@ function analyzeArticle1() {
 }
 
 // ============================================================
-// メイン関数2：任意テーマで分析（使い回し用）
+// 記事2：介護保険の申請から認定まで
+// ============================================================
+function analyzeArticle2() {
+  var config = {
+    theme: '介護保険って、どう申請するの？ — 制度のハブ記事',
+    perspective: PERSPECTIVE,
+    urls: [
+      { url: 'https://www.sunnylife-group.co.jp/contents/long-term-care-insurance-application', label: '企業・サニーライフ' },
+      { url: 'https://kaigo.homes.co.jp/manual/insurance/how_to_get/', label: '企業・LIFULL介護' },
+      { url: 'https://kaigo.alsok.co.jp/care_story/archives/46', label: '企業・ALSOK介護' },
+      { url: 'https://www.kaigo-soudan21.jp/column/detail/29/column0002', label: '企業・介護なんでも相談室' },
+      { url: 'https://www.sykz.co.jp/media/to-be-certified-as-requiring-long-term-care/', label: '企業・そよ風' },
+      { url: 'https://www.irs.jp/media/knowledge/%E8%A6%81%E4%BB%8B%E8%AD%B7%E8%AA%8D%E5%AE%9A%E3%82%92%E5%8F%97%E3%81%91%E3%82%8B%E3%81%AB%E3%81%AF.html', label: '企業・イリーゼ' },
+      { url: 'https://www.kaigokensaku.mhlw.go.jp/commentary/flow.html', label: '公式・厚労省' },
+      { url: 'https://park.sompo-japan.co.jp/mylife/kaigo-san/article/sj-003/', label: '企業・SOMPO' },
+      { url: 'https://note.com/aohina4312/n/ncc97d2978f09', label: 'note・ゆーたろ' },
+      { url: 'https://note.com/swim_kaigo123/n/n5ad19794e80d', label: 'note・ケンコーチ' },
+      { url: 'https://note.com/manato_care/n/nf2f76e10b446', label: 'note・まなと' },
+      { url: 'https://note.com/20250828/n/n5539d4f8a261', label: 'note・やすらぎみちこ' },
+      { url: 'https://note.com/kaikoukai/n/nfa70b455c4dd', label: 'note・偕行会グループ' },
+      { url: 'https://note.com/carenews/n/n22b2da0a8b20', label: 'note・くま先生' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 記事3：高齢者の熱中症と在宅の暑さ対策
+// ============================================================
+function analyzeArticle3() {
+  var config = {
+    theme: '親が、この夏を無事に越せるように — 高齢者の熱中症・在宅暑さ対策',
+    perspective: PERSPECTIVE,
+    urls: [
+      { url: 'https://www.secom.co.jp/kaigo/basic/20180529.html', label: '企業・セコム' },
+      { url: 'https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/kenkou/nettyuu/nettyuu_taisaku/prevent.html', label: '公式・厚労省' },
+      { url: 'https://www.azumien.jp/contents/industry/00062.html', label: '企業・あずみ苑' },
+      { url: 'https://joylife.alsok.co.jp/knowhow/archives/49', label: '企業・ALSOKジョイライフ' },
+      { url: 'https://healthscienceshop.nestle.jp/blogs/isocal/knowledge-heatstroke-001-index', label: '企業・ネスレ' },
+      { url: 'https://www.pref.chiba.lg.jp/ontai/necchusho/koreisha.html', label: '公式・千葉県' },
+      { url: 'https://home-health.chihiro-fukushi.jp/%E3%80%90%E9%AB%98%E9%BD%A2%E8%80%85%E5%90%91%E3%81%91%E3%80%91%E5%91%BD%E3%82%92%E5%AE%88%E3%82%8B%E7%86%B1%E4%B8%AD%E7%97%87%E5%AF%BE%E7%AD%96%EF%BC%81%E5%8E%9F%E5%9B%A0%E3%83%BB%E7%97%87%E7%8A%B6/', label: '企業・ちひろ福祉' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 記事4：介護のお金
+// ============================================================
+function analyzeArticle4() {
+  var config = {
+    theme: '介護のお金 — いくらかかる？負担を軽くする制度',
+    perspective: PERSPECTIVE,
+    urls: [
+      { url: 'https://anshinkaigo.asahi-life.co.jp/activity/kaigo/column14/', label: '企業・朝日生命' },
+      { url: 'https://www.my-kaigo.com/pub/individual/money/kokyo-seido/', label: '企業・MY介護の広場' },
+      { url: 'https://www.moneypro.jp/columns/others/3200/', label: '企業・マネプロ' },
+      { url: 'https://www.bk.mufg.jp/column/events/secondlife/b0032.html', label: '企業・三菱UFJ' },
+      { url: 'https://kaigo.benesse-style-care.co.jp/article/knowledge/beginner/support', label: '企業・ベネッセ' },
+      { url: 'https://kaigo.homes.co.jp/manual/voice/kentou/seido/', label: '企業・LIFULL介護' },
+      { url: 'https://www.hokenmarket.net/carna/worry/post327.html', label: '企業・イオン保険' },
+      { url: 'https://note.com/hori_0023/n/n095bb9aa5d98', label: 'note・堀内たかる' },
+      { url: 'https://note.com/gontamodoki/n/neb75620edcee', label: 'note・Kontam' },
+      { url: 'https://note.com/yukamatsushima/n/n1aa5bd0b310a', label: 'note・YukaMatsushima' },
+      { url: 'https://note.com/kurumirai08/n/na38b636030bf', label: 'note・AI活用相談所' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 記事5：年末年始の帰省で親の異変に気づいたら
+// ============================================================
+function analyzeArticle5() {
+  var config = {
+    theme: '年末年始の帰省で、親の異変に気づいたら — 気づきの入口（冬）',
+    perspective: PERSPECTIVE,
+    urls: [
+      { url: 'https://president.jp/articles/-/53324?page=1', label: '企業・PRESIDENT' },
+      { url: 'https://happy-clover-k.jp/news/4406/', label: '企業・Happyクローバー' },
+      { url: 'https://kaigo.homes.co.jp/manual/homecare/choosinghouse/enkyori_kaigo/', label: '企業・LIFULL介護' },
+      { url: 'https://my-nurse.jp/blogs/column/enkyorikaigo/202212-3491/', label: '企業・わたしの看護師さん' },
+      { url: 'https://keishin-net.jp/2025/12/27/year-end-new-year-social-care/', label: '企業・KEISHIN' },
+      { url: 'https://www.caremanagement.jp/bbs/thread/15712', label: 'CMO・ケアマネ掲示板' },
+      { url: 'https://care.kaigor.com/home_care/kisei_hindo/', label: '企業・いえケア' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 記事6：ケアマネの選び方と付き合い方
+// ============================================================
+function analyzeArticle6() {
+  var config = {
+    theme: 'ケアマネジャーの選び方・付き合い方 — 関係づくり',
+    perspective: PERSPECTIVE,
+    urls: [
+      { url: 'https://kaigo.homes.co.jp/manual/homecare/basic/caremanager/', label: '企業・LIFULL介護' },
+      { url: 'https://e-nursingcare.com/guide/homecare/good-caremanager/', label: '企業・日刊介護新聞' },
+      { url: 'https://www.sykz.co.jp/media/caremanager-selection/', label: '企業・そよ風' },
+      { url: 'https://joylife.alsok.co.jp/knowhow/archives/78', label: '企業・ALSOKジョイライフ' },
+      { url: 'https://www.irs.jp/media/knowledge/%E3%82%B1%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AE%E9%81%B8%E3%81%B3%E6%96%B9.html', label: '企業・イリーゼ' },
+      { url: 'https://www.alsok.co.jp/person/recommend/2157/', label: '企業・ALSOK' },
+      { url: 'https://www.sompo-egaoclub.com/articles/topic/1291', label: '企業・SOMPO' },
+      { url: 'https://www.ycota.jp/point/28838', label: '企業・ヤマシタ' },
+      { url: 'https://note.com/witty_roses5347/n/na26c540b5493', label: 'note・柳沢しおん' },
+      { url: 'https://note.com/hokkaidomsw/n/nb32e9eed96e3', label: 'note・北海道MSW' },
+      { url: 'https://note.com/yasashisa_biyori/n/n959dd0e766d6', label: 'note・もりたまゆみ' },
+      { url: 'https://note.com/hot_coyote5546/n/n979e056b8c6c', label: 'note・産業ケアマネ宮城' },
+      { url: 'https://note.com/tsumugukai/n/ndbd10606661e', label: 'note・ケアマネを紡ぐ会' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 記事7-10：ユマニチュード・ミニシリーズ（共通分析）
+// ============================================================
+function analyzeArticle7to10_Humanitude() {
+  var config = {
+    theme: 'ユマニチュード・ミニシリーズ（4本）— 認知症ケアの入口から5つのステップまで',
+    perspective: [
+      PERSPECTIVE,
+      '記事7=導入・入口、記事8=見る・話す、記事9=触れる・立つ、記事10=5つのステップ。',
+      '鉄則：①商標表記（考案者・出所を明記）②効果断定NG（"やわらぐことがある"止め）③自己流誘導回避（マインドOK、手技は専門職へ橋渡し）'
+    ].join('\n'),
+    urls: [
+      { url: 'https://jhuma.org/humanitude/', label: '公式・日本ユマニチュード学会' },
+      { url: 'https://jhuma.org/%E5%AE%B6%E6%97%8F%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%A6%E3%83%9E%E3%83%8B%E3%83%81%E3%83%A5%E3%83%BC%E3%83%89-%E3%81%9D%E3%81%AE%E4%BA%BA%E3%82%89%E3%81%97%E3%81%95%E3%82%92/', label: '公式・学会（家族向け）' },
+      { url: 'https://kaigo.homes.co.jp/manual/dementia/care/humanitude/', label: '企業・LIFULL介護' },
+      { url: 'https://www.medical-jpn.jp/hub/ja-jp/blog/humanitude.html', label: '企業・メディカルジャパン' },
+      { url: 'https://kaigo.alsok.co.jp/care_story/archives/59', label: '企業・ALSOK介護' },
+      { url: 'https://www.azumien.jp/contents/method/00035.html', label: '企業・あずみ苑' },
+      { url: 'https://www.ekaigotenshoku.com/ekaigowith/2020/03/26/humanitude_care/', label: '企業・ekaigo' },
+      { url: 'https://www.mcsg.co.jp/kentatsu/dementia/12111', label: '企業・健達ねっと' },
+      { url: 'https://wellnesslab-report.jp/pj/gamma-tech/column/care-dementia-humanitude.html', label: '企業・ウェルネスラボ' },
+      { url: 'https://note.com/mako_mako278/n/nd3e9ad35b7ec', label: 'note・介護のお医者さん' },
+      { url: 'https://note.com/mirimiri111_/n/n5fb71fbfc62f', label: 'note・amiami' },
+      { url: 'https://note.com/seniorkaigo/n/n72e2a3cd9a05', label: 'note・シニアnet介護' },
+      { url: 'https://note.com/kotokotokawasaki/n/n4798364d6d2e', label: 'note・かわさき実践講座' },
+      { url: 'https://note.com/ktate79/n/nf01fb8d3575c', label: 'note・ktate' }
+    ]
+  };
+  runFullAnalysis(config);
+}
+
+// ============================================================
+// 全記事一括分析（※実行時間が長い。個別実行を推奨）
+// ============================================================
+function analyzeAll() {
+  Logger.log('========== 全記事一括分析 開始 ==========');
+  analyzeArticle1();
+  analyzeArticle2();
+  analyzeArticle3();
+  analyzeArticle4();
+  analyzeArticle5();
+  analyzeArticle6();
+  analyzeArticle7to10_Humanitude();
+  Logger.log('========== 全記事一括分析 完了 ==========');
+}
+
+// ============================================================
+// 共通の筆者プロフィール（全記事で共有）
+// ============================================================
+var PERSPECTIVE = [
+  '筆者：現役ケアマネ13年・主任介護支援専門員。',
+  '強み：企業メディアにはない"現場のリアル"。',
+  '「初日に何が起きるか」「家族が見落とすこと」「ケアマネが本当に思っていること」を具体的に語れる。',
+  '署名：結の音（AI下書き＋現役主任ケアマネが確認・加筆）。',
+  '媒体：noteで公開。介護家族と新人ケアマネの両方に届ける。'
+].join('\n');
+
+// ============================================================
+// メイン関数（任意テーマ）：analyzeCustom
 // ============================================================
 function analyzeCustom() {
   var config = {
